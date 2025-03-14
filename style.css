@@ -6,15 +6,28 @@
 }
 
 body {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: #0f0f1e;
     min-height: 100vh;
     padding: 50px 0;
+    color: white;
+    overflow-x: hidden;
+}
+
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 header {
@@ -22,16 +35,227 @@ header {
     margin-bottom: 4rem;
 }
 
-header h1 {
-    font-size: 3rem;
-    color: #2c3e50;
+.glitch-text {
+    font-size: 3.5rem;
+    color: #fff;
     margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+    text-shadow: 0 0 10px rgba(0, 195, 255, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff00c1;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+    animation: glitch-anim2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip: rect(31px, 9999px, 94px, 0);
+        transform: skew(0.85deg);
+    }
+    5% {
+        clip: rect(70px, 9999px, 78px, 0);
+        transform: skew(0.18deg);
+    }
+    10% {
+        clip: rect(75px, 9999px, 96px, 0);
+        transform: skew(0.6deg);
+    }
+    15% {
+        clip: rect(66px, 9999px, 91px, 0);
+        transform: skew(0.38deg);
+    }
+    20% {
+        clip: rect(26px, 9999px, 67px, 0);
+        transform: skew(0.28deg);
+    }
+    25% {
+        clip: rect(33px, 9999px, 3px, 0);
+        transform: skew(0.46deg);
+    }
+    30% {
+        clip: rect(51px, 9999px, 25px, 0);
+        transform: skew(0.1deg);
+    }
+    35% {
+        clip: rect(9px, 9999px, 37px, 0);
+        transform: skew(0.48deg);
+    }
+    40% {
+        clip: rect(19px, 9999px, 14px, 0);
+        transform: skew(0.92deg);
+    }
+    45% {
+        clip: rect(71px, 9999px, 88px, 0);
+        transform: skew(0.55deg);
+    }
+    50% {
+        clip: rect(90px, 9999px, 80px, 0);
+        transform: skew(0.71deg);
+    }
+    55% {
+        clip: rect(94px, 9999px, 75px, 0);
+        transform: skew(0.96deg);
+    }
+    60% {
+        clip: rect(40px, 9999px, 23px, 0);
+        transform: skew(0.89deg);
+    }
+    65% {
+        clip: rect(54px, 9999px, 65px, 0);
+        transform: skew(0.67deg);
+    }
+    70% {
+        clip: rect(96px, 9999px, 34px, 0);
+        transform: skew(0.99deg);
+    }
+    75% {
+        clip: rect(52px, 9999px, 5px, 0);
+        transform: skew(0.28deg);
+    }
+    80% {
+        clip: rect(75px, 9999px, 67px, 0);
+        transform: skew(0.05deg);
+    }
+    85% {
+        clip: rect(54px, 9999px, 27px, 0);
+        transform: skew(0.89deg);
+    }
+    90% {
+        clip: rect(9px, 9999px, 29px, 0);
+        transform: skew(0.42deg);
+    }
+    95% {
+        clip: rect(38px, 9999px, 96px, 0);
+        transform: skew(0.43deg);
+    }
+    100% {
+        clip: rect(95px, 9999px, 43px, 0);
+        transform: skew(0.7deg);
+    }
+}
+
+@keyframes glitch-anim2 {
+    0% {
+        clip: rect(65px, 9999px, 100px, 0);
+        transform: skew(0.3deg);
+    }
+    5% {
+        clip: rect(51px, 9999px, 69px, 0);
+        transform: skew(0.05deg);
+    }
+    10% {
+        clip: rect(21px, 9999px, 97px, 0);
+        transform: skew(0.84deg);
+    }
+    15% {
+        clip: rect(38px, 9999px, 43px, 0);
+        transform: skew(0.75deg);
+    }
+    20% {
+        clip: rect(69px, 9999px, 89px, 0);
+        transform: skew(0.9deg);
+    }
+    25% {
+        clip: rect(8px, 9999px, 27px, 0);
+        transform: skew(0.09deg);
+    }
+    30% {
+        clip: rect(62px, 9999px, 51px, 0);
+        transform: skew(0.67deg);
+    }
+    35% {
+        clip: rect(27px, 9999px, 75px, 0);
+        transform: skew(0.97deg);
+    }
+    40% {
+        clip: rect(64px, 9999px, 91px, 0);
+        transform: skew(0.28deg);
+    }
+    45% {
+        clip: rect(95px, 9999px, 87px, 0);
+        transform: skew(0.71deg);
+    }
+    50% {
+        clip: rect(7px, 9999px, 15px, 0);
+        transform: skew(0.51deg);
+    }
+    55% {
+        clip: rect(53px, 9999px, 54px, 0);
+        transform: skew(0.22deg);
+    }
+    60% {
+        clip: rect(93px, 9999px, 91px, 0);
+        transform: skew(0.92deg);
+    }
+    65% {
+        clip: rect(79px, 9999px, 34px, 0);
+        transform: skew(0.48deg);
+    }
+    70% {
+        clip: rect(73px, 9999px, 71px, 0);
+        transform: skew(0.04deg);
+    }
+    75% {
+        clip: rect(93px, 9999px, 86px, 0);
+        transform: skew(0.22deg);
+    }
+    80% {
+        clip: rect(75px, 9999px, 66px, 0);
+        transform: skew(0.05deg);
+    }
+    85% {
+        clip: rect(54px, 9999px, 27px, 0);
+        transform: skew(0.89deg);
+    }
+    90% {
+        clip: rect(9px, 9999px, 29px, 0);
+        transform: skew(0.42deg);
+    }
+    95% {
+        clip: rect(38px, 9999px, 96px, 0);
+        transform: skew(0.43deg);
+    }
+    100% {
+        clip: rect(95px, 9999px, 43px, 0);
+        transform: skew(0.7deg);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+    }
+    to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00c3ff, 0 0 40px #00c3ff, 0 0 50px #00c3ff, 0 0 60px #00c3ff, 0 0 70px #00c3ff;
+    }
 }
 
 header p {
-    color: #34495e;
+    color: #a0a0c0;
     font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
 }
 
 .team-grid {
@@ -39,19 +263,27 @@ header p {
     grid-template-columns: repeat(2, 1fr);
     gap: 2.5rem;
     padding: 0 1rem;
+    perspective: 1000px;
 }
 
 .member-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 
+                inset 0 0 15px rgba(255, 255, 255, 0.05),
+                0 0 20px rgba(0, 195, 255, 0.2);
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .member-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    transform: translateY(-15px) rotateX(5deg);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                inset 0 0 20px rgba(255, 255, 255, 0.1),
+                0 0 30px rgba(0, 195, 255, 0.3);
 }
 
 .member-image {
@@ -61,65 +293,137 @@ header p {
     position: relative;
 }
 
+.member-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.member-card:hover .member-image::before {
+    opacity: 1;
+}
+
 .member-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s ease;
+    filter: grayscale(30%);
 }
 
 .member-card:hover .member-image img {
     transform: scale(1.1);
+    filter: grayscale(0%);
 }
 
 .member-info {
     padding: 1.8rem;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
 .member-info h2 {
-    color: #2c3e50;
+    color: #fff;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.member-info h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #00c3ff, #77e8ff);
+    transition: width 0.3s ease;
+}
+
+.member-card:hover .member-info h2::after {
+    width: 80%;
 }
 
 .member-info p {
-    color: #7f8c8d;
+    color: #a0a0c0;
     font-size: 1rem;
     margin-bottom: 1.2rem;
 }
 
 .social-links {
     margin: 1.2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
 }
 
 .social-links a {
-    color: #3498db;
-    margin: 0 12px;
-    font-size: 1.3rem;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
     transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .social-links a:hover {
-    color: #2980b9;
-    transform: translateY(-3px);
+    color: #fff;
+    transform: translateY(-5px);
+    background: rgba(0, 195, 255, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 195, 255, 0.4);
 }
 
 .profile-btn {
     display: inline-block;
     padding: 0.8rem 2rem;
-    background: linear-gradient(135deg, #3498db, #2980b9);
+    background: linear-gradient(45deg, #0073e6, #00c3ff);
     color: white;
     text-decoration: none;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    border-radius: 30px;
+    transition: all 0.4s ease;
     font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 115, 230, 0.4);
+}
+
+.profile-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(45deg, #00c3ff, #0073e6);
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+
+.profile-btn:hover::before {
+    width: 100%;
 }
 
 .profile-btn:hover {
-    background: linear-gradient(135deg, #2980b9, #3498db);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 115, 230, 0.6);
 }
 
 @media (max-width: 768px) {
@@ -136,6 +440,11 @@ header p {
     }
     
     .team-grid {
+        grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    
+    .glitch-text {
+        font-size: 2.5rem;
     }
 }
